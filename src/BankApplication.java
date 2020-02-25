@@ -25,15 +25,15 @@ public class BankApplication {
 				break;
 
 			case 3:
-
+				deposit(sc, bank);
 				break;
 
 			case 4:
-
+				withdraw(sc, bank);
 				break;
 
 			case 5:
-
+				transaction(sc, bank);
 				break;
 
 			case 6:
@@ -41,11 +41,14 @@ public class BankApplication {
 				break;
 
 			case 7:
-
+				remove(sc, bank);
 				break;
 
 			case 8:
 				ArrayList<BankAccount> all = bank.getAllAccounts();
+				if(all == null) {
+					break;
+				}
 				for(BankAccount b: all) {
 					System.out.println(b.toString());
 				}
@@ -54,8 +57,11 @@ public class BankApplication {
 			case 9:
 				running = false;
 				break;
-
+		default:
+			System.err.println("Fel input");
+				
 			}
+			
 		}
 	}
 	static void addAccount(Scanner sc, Bank bank) {
@@ -82,5 +88,68 @@ public class BankApplication {
 		for(Customer b: byHolder) {
 			System.out.println(b.toString());
 		}
+	}
+	static void withdraw(Scanner sc, Bank bank) {
+
+		System.out.println("Kontonummer: ");
+		int nr = sc.nextInt();
+		System.out.println("Hur mycket? ");
+		double val = sc.nextDouble();
+		if(bank.findByNumber(nr) == null) {
+			System.err.println("kontot finns ej");
+		}6
+		else if(bank.findByNumber(nr).getAmount()>=val) {
+			bank.findByNumber(nr).withdraw(val);
+		}
+		else {
+			System.err.println("Insufficient funds");
+		}
+	}
+	static void deposit(Scanner sc, Bank bank) {
+		System.out.println("Kontonummer: ");
+		int nr = sc.nextInt();
+		System.out.println("Hur mycket? ");
+		double val = sc.nextDouble();
+		if(val < 0) {
+			System.err.println("Inga negativa belopp");
+		}
+		else if(bank.findByNumber(nr) == null) {
+			System.err.println("kontot finns ej");
+		}
+		else {
+			bank.findByNumber(nr).deposit(val);
+		}
+	}
+	static void transaction(Scanner sc, Bank bank) {
+
+		System.out.println("Kontonummer från: ");
+		int nr1 = sc.nextInt();
+		System.out.println("Kontonummer till: ");
+		int nr2 = sc.nextInt();
+		System.out.println("Hur mycket? ");
+		double val = sc.nextDouble();
+		if(val < 0) {
+			System.err.println("Inga negativa belopp");
+		}
+		else if(bank.findByNumber(nr1) == null) {
+			System.err.println("sändarkontot finns ej");
+		}
+		else if(bank.findByNumber(nr2) == null) {
+			System.err.println("mottagarkontot finns ej");
+		}
+		else {
+			if(bank.findByNumber(nr1).getAmount()>=val) {
+				bank.findByNumber(nr1).withdraw(val);
+				bank.findByNumber(nr2).deposit(val);
+			}
+			else {
+				System.err.println("Insufficient funds");
+			}
+		}
+	}
+	static void remove(Scanner sc, Bank bank) {
+		System.out.println("Kontonummer: ");
+		int nr = sc.nextInt();
+		bank.removeAccount(nr);
 	}
 }

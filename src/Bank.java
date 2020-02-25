@@ -53,6 +53,9 @@ public class Bank {
 	* Listan är sorterad på kontoinnehavarnas namn.
 	*/
 	ArrayList<BankAccount> getAllAccounts(){
+		if(accs.size() == 0) {
+			return null;
+		}
 		ArrayList<BankAccount> output = new ArrayList<BankAccount>();
 		ArrayList<BankAccount> unsorted = new ArrayList<BankAccount>(accs);
 		while(unsorted.size() > 1) {
@@ -76,7 +79,7 @@ public class Bank {
 	* Returnerar null om inget sådant konto finns.
 	*/
 	BankAccount findByNumber(int accountNumber) {
-		for(int i = 0; i<accs.size();i++){
+		for(int i = 0; i<accs.size(); i++){
 			if(accs.get(i).getAccountNumber() == accountNumber) {
 				return accs.get(i);
 			}
