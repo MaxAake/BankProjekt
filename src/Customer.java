@@ -7,12 +7,12 @@ public class Customer {
 	String name;
 	long idNbr;
 	int csNbr;
-	static int internalAccountNbr = 3141592;
+	static int internalCustomerNbr = 3141592; //Godtyckligt tal att börja på, ökar med 1 och tillhör klassen. 
 	Customer(String name, long idNr){
 		this.name = name;
 		this.idNbr = idNr;
-		this.csNbr = internalAccountNbr;
-		newAcc();
+		this.csNbr = internalCustomerNbr;
+		internalCustomerNbr += 1;
 		
 	}
 	/** Tar reda på kundens namn. */
@@ -30,12 +30,7 @@ public class Customer {
 	/** Returnerar en strängbeskrivning av kunden. */
 	 public String toString() { //Varför ska denna vara public, kolla upp!!!
 	return("Kundnamn: " + name + "\n" + "Personnummer: " + idNbr + "\n" + "Kundnummer: " + csNbr);
-
+	//Ny rad på alla värden, snyggare!
 	}
-	 
-	 public void newAcc() {
-		 internalAccountNbr +=1;
-	 }
-
 	
 }
