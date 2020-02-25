@@ -7,19 +7,18 @@ public class BankAccount {
 	*/
 	double amount;
 	Customer holder;
-	long holderId;
 	int accountNumber;
 	BankAccount(String holderName, long holderId){
 		amount = 0;
-		this.holderId = holderId;
-		
+		holder = new Customer(holderName, holderId);
 	}
 	/**
 	* Skapar ett nytt bankkonto med innehavare ’holder’. Kontot tilldelas
 	* ett unikt kontonummer och innehåller inledningsvis 0 kr.
 	*/
 	BankAccount(Customer holder){
-		
+		amount = 0;
+		this.holder = holder;
 	}
 	/** Tar reda på kontots innehavare. */
 	Customer getHolder() {
@@ -48,6 +47,6 @@ public class BankAccount {
 	}
 /** Returnerar en strängrepresentation av bankkontot. */
 	String toString() {
-		
+		return ("Konto " + accountNumber + " (" + holder.toString + "): " + amount);
 	}
 }
