@@ -2,7 +2,7 @@
 public class Bank {
 	/** Skapar en ny bank utan konton. */
 	Bank(){
-		
+		banan
 	}
 	/**
 	* Öppna ett nytt konto i banken. Om det redan finns en kontoinnehavare
