@@ -97,7 +97,7 @@ public class BankApplication {
 		double val = sc.nextDouble();
 		if(bank.findByNumber(nr) == null) {
 			System.err.println("kontot finns ej");
-		}6
+		}
 		else if(bank.findByNumber(nr).getAmount()>=val) {
 			bank.findByNumber(nr).withdraw(val);
 		}
