@@ -8,9 +8,12 @@ public class BankAccount {
 	double amount;
 	Customer holder;
 	int accountNumber;
+	static int internalAccountNumber = 1001;
 	BankAccount(String holderName, long holderId){
 		amount = 0;
 		holder = new Customer(holderName, holderId);
+		accountNumber = internalAccountNumber;
+		internalAccountNumber += 1;
 	}
 	/**
 	* Skapar ett nytt bankkonto med innehavare ’holder’. Kontot tilldelas
@@ -46,7 +49,7 @@ public class BankAccount {
 		this.amount -= amount;
 	}
 /** Returnerar en strängrepresentation av bankkontot. */
-	String toString() {
-		return ("Konto " + accountNumber + " (" + holder.toString + "): " + amount);
+	public String toString() { //Varför public???
+		return ("Konto " + accountNumber + " (" + holder.toString() + "): " + amount);
 	}
 }
