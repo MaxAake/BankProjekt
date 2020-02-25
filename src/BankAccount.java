@@ -12,7 +12,7 @@ public class BankAccount {
 	BankAccount(String holderName, long holderId){
 		amount = 0;
 		holder = new Customer(holderName, holderId);
-		accountNumber = internalAccountNumber;
+		this.accountNumber = internalAccountNumber;
 		internalAccountNumber += 1;
 	}
 	/**
@@ -22,6 +22,8 @@ public class BankAccount {
 	BankAccount(Customer holder){
 		amount = 0;
 		this.holder = holder;
+		this.accountNumber = internalAccountNumber;
+		internalAccountNumber += 1;
 	}
 	/** Tar reda på kontots innehavare. */
 	Customer getHolder() {

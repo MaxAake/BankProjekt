@@ -18,7 +18,7 @@ public class Bank {
 			accs.add(new BankAccount(holder));
 		}
 		else {
-			accs.add(new BankAccount(new Customer(holderName, idNr)));
+			accs.add(new BankAccount(holderName, idNr));
 		}
 		int newAcc = accs.get(accs.size()-1).accountNumber;
 		return newAcc;
@@ -54,11 +54,11 @@ public class Bank {
 	*/
 	ArrayList<BankAccount> getAllAccounts(){
 		ArrayList<BankAccount> output = new ArrayList<BankAccount>();
-		ArrayList<BankAccount> unsorted = accs;
+		ArrayList<BankAccount> unsorted = new ArrayList<BankAccount>(accs);
 		while(unsorted.size() > 1) {
 			int smallest = 0;
-			for(int i = 1; i < output.size(); i++) {
-				if(unsorted.get(i).getHolder().getName().compareTo(unsorted.get(smallest).getHolder().getName()) < 0){
+			for(int i = 1; i < unsorted.size(); i++) {
+				if(comparison(unsorted.get(i), unsorted.get(smallest)) < 0){
 					smallest = i;
 				}
 			}
@@ -67,6 +67,9 @@ public class Bank {
 		}
 		output.add(unsorted.get(0));
 		return output;
+	}
+	static int comparison(BankAccount a, BankAccount b) {
+		return a.getHolder().getName().toLowerCase().compareTo(b.getHolder().getName().toLowerCase());
 	}
 	/**
 	* Söker upp och returnerar bankkontot med kontonummer ’accountNumber’.

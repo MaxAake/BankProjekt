@@ -29,7 +29,7 @@ public class Customer {
 	}
 	/** Returnerar en strängbeskrivning av kunden. */
 	 public String toString() { //Varför ska denna vara public, kolla upp!!!
-	return("Kundnamn: " + name + "\n" + "Personnummer: " + idNbr + "\n" + "Kundnummer: " + csNbr);
+	return("Kundnamn: " + name +  ", Personnummer: " + idNbr +  ", Kundnummer: " + csNbr);
 	//Ny rad på alla värden, snyggare!
 	}
 	
