@@ -5,10 +5,15 @@ public class Customer {
 	* Kunden tilldelas också ett unikt kundnummer.
 	*/
 	String name;
-	long idNr;
+	long idNbr;
+	int csNbr;
+	static int internalAccountNbr = 3141592;
 	Customer(String name, long idNr){
 		this.name = name;
-		this.idNr = idNr;
+		this.idNbr = idNr;
+		this.csNbr = internalAccountNbr;
+		newAcc();
+		
 	}
 	/** Tar reda på kundens namn. */
 	String getName() {
@@ -16,14 +21,21 @@ public class Customer {
 	}
 	/** Tar reda på kundens personnummer. */
 	long getIdNr() {
-		return idNr;
+		return idNbr;
 	}
 	/** Tar reda på kundens kundnummer. */
 	int getCustomerNr() {
-		
+		return csNbr;
 	}
 	/** Returnerar en strängbeskrivning av kunden. */
-	String toString() {
-		
+	 public String toString() { //Varför ska denna vara public, kolla upp!!!
+	return("Kundnamn: " + name + "\n" + "Personnummer: " + idNbr + "\n" + "Kundnummer: " + csNbr);
+
 	}
+	 
+	 public void newAcc() {
+		 internalAccountNbr +=1;
+	 }
+
+	
 }
