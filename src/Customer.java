@@ -4,10 +4,10 @@ public class Customer {
 	* Skapar en kund (kontoinnehavare) med namnet ’name’ och id-nummer ’idNr’.
 	* Kunden tilldelas också ett unikt kundnummer.
 	*/
-	String name;
-	long idNbr;
-	int csNbr;
-	static int internalCustomerNbr = 3141592; //Godtyckligt tal att börja på, ökar med 1 och tillhör klassen. 
+	private String name;
+	private long idNbr;
+	private int csNbr;
+	private static int internalCustomerNbr = 3141592; //Godtyckligt tal att börja på, ökar med 1 och tillhör klassen. 
 	Customer(String name, long idNr){
 		this.name = name;
 		this.idNbr = idNr;

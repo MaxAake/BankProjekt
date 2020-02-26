@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class Bank {
 	/** Skapar en ny bank utan konton. */
-	ArrayList<BankAccount> accs;
+	private ArrayList<BankAccount> accs;
 	Bank(){
 		accs = new ArrayList<BankAccount>();
 	}
@@ -20,7 +20,7 @@ public class Bank {
 		else {
 			accs.add(new BankAccount(holderName, idNr));
 		}
-		int newAcc = accs.get(accs.size()-1).accountNumber;
+		int newAcc = accs.get(accs.size()-1).getAccountNumber();
 		return newAcc;
 	}
 	/**

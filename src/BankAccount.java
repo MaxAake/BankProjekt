@@ -5,10 +5,10 @@ public class BankAccount {
 	* id ’holderId’. Kontot tilldelas ett unikt kontonummer och innehåller
 	* inledningsvis 0 kr.
 	*/
-	double amount;
-	Customer holder;
-	int accountNumber;
-	static int internalAccountNumber = 1001;
+	private double amount;
+	private Customer holder;
+	private int accountNumber;
+	private static int internalAccountNumber = 1001;
 	BankAccount(String holderName, long holderId){
 		amount = 0;
 		holder = new Customer(holderName, holderId);
